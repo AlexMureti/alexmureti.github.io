@@ -1,0 +1,5 @@
+_shot_*.png
+_m_*.png
+shoot.mjs
+node_modules/
+.DS_Store
