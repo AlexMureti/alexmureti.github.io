@@ -3,3 +3,4 @@ _m_*.png
 shoot.mjs
 node_modules/
 .DS_Store
+_sig_*.png

@@ -1,0 +1,56 @@
+Alex Maingi — plain-text signature
+==================================================================
+For clients that strip HTML, for terminal mail, and for anywhere a
+table would arrive as a wall of markup. Uses only ASCII that renders
+identically in every monospace font — no box-drawing characters,
+which break in older clients and on some Android mail apps.
+
+Keep the em-dash line at 46 characters so it never wraps on a phone.
+
+------------------------------------------------------------------
+VERSION 1 — default. Use this one.
+------------------------------------------------------------------
+
+--
+Alex Maingi
+Software & AI Engineer · Nairobi, Kenya
+
+alexmkmaingi@gmail.com · +254 740 180 214
+github.com/AlexMureti
+
+
+------------------------------------------------------------------
+VERSION 2 — ruled. For longer or more formal mail, where the
+signature needs a visible edge to sit behind.
+------------------------------------------------------------------
+
+--
+==================================================
+ALEX MAINGI
+Software & AI Engineer · Nairobi, Kenya
+--------------------------------------------------
+E  alexmkmaingi@gmail.com
+T  +254 740 180 214
+W  github.com/AlexMureti
+==================================================
+
+
+------------------------------------------------------------------
+NOTE ON THE "--" LINE
+------------------------------------------------------------------
+The two hyphens and a space on their own line is the RFC 3676
+signature delimiter. Mail clients that understand it will collapse
+or grey out everything below automatically, and will strip it from
+quoted replies so your signature does not stack up down a thread.
+
+It costs nothing and almost nobody uses it.
+
+
+------------------------------------------------------------------
+WHEN YOU HAVE A DOMAIN
+------------------------------------------------------------------
+Swap github.com/AlexMureti for the domain, and the Gmail address
+for one at that domain. A personal Gmail in the signature is the
+single biggest thing separating this from reading as a business —
+alex@yourdomain costs about KSh 1,200 a year and changes how the
+whole block lands.

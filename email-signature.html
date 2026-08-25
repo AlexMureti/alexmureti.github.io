@@ -1,0 +1,116 @@
+<!--
+  ══════════════════════════════════════════════════════════════════
+  ALEX MAINGI — EMAIL SIGNATURE
+  ══════════════════════════════════════════════════════════════════
+
+  WHAT ACTUALLY WORKS IN EMAIL, AND WHAT DOES NOT
+  ─────────────────────────────────────────────────────────────────
+  ✓ Hosted images            every client, when images are enabled
+  ✓ Clickable links          everywhere
+  ✓ Bulletproof buttons      a table with bgcolor, not a CSS button
+  ✓ Inline styles            the only styling Gmail reliably keeps
+  ~ :hover                   Apple Mail + most webmail. Gmail app: no
+  ~ dark mode                Apple Mail yes, Gmail partial, Outlook no
+  ✗ JavaScript               stripped by every major client
+  ✗ CSS animation            stripped by Gmail, ignored by Outlook
+  ✗ data: URI images         Gmail blocks them — images must be hosted
+  ✗ forms / inputs           stripped
+
+  So everything below degrades in a defined order. With images off it
+  is still a complete, readable signature — the mark falls back to a
+  dark tile with initials, and nothing collapses.
+
+  ─────────────────────────────────────────────────────────────────
+  BEFORE YOU USE IT — host the image
+  ─────────────────────────────────────────────────────────────────
+  Push assets/mark-200.png to GitHub, then the src below resolves.
+  Verify by opening the raw URL in a browser first. If the image 404s
+  every recipient sees the alt text instead.
+
+  ─────────────────────────────────────────────────────────────────
+  INSTALLING IN GMAIL
+  ─────────────────────────────────────────────────────────────────
+  Open this file in a browser → select the rendered block → copy →
+  Gmail → Settings → General → Signature → paste.
+  Do NOT paste the source. Gmail escapes it and you get raw markup.
+
+  Note: Gmail's signature editor strips the <style> block, so hover
+  is lost there. Everything else survives. The hover only applies
+  when the HTML is sent directly, as it was on the draft to Sam.
+-->
+<style>
+  /* Stripped by Gmail's signature editor; honoured when the HTML is
+     sent as a message body. Nothing here is load-bearing. */
+  .sig-link:hover      { color:#ff4a1c !important; }
+  .sig-btn:hover       { background-color:#ff4a1c !important; border-color:#ff4a1c !important; }
+  .sig-btn:hover a     { color:#ffffff !important; }
+  /* NO prefers-color-scheme text overrides — deliberately.
+     Flipping text to near-white assumes the client also flips the
+     background, and many do not: Gmail applies dark mode selectively,
+     Outlook ignores it. The result is white text on white, which is
+     how this signature nearly shipped invisible.
+     Clients that force dark mode invert dark text themselves. Giving
+     them dark text and getting out of the way is the safe play. */
+  @media only screen and (max-width:480px) {
+    .sig-mark  { display:none !important; }
+    .sig-body  { padding-left:0 !important; }
+  }
+</style>
+
+<table cellpadding="0" cellspacing="0" border="0" role="presentation"
+       style="border-collapse:collapse;max-width:520px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+
+  <!-- accent rule -->
+  <tr><td colspan="2" style="padding:0 0 16px 0;">
+    <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;"><tr>
+      <td style="width:36px;height:2px;background-color:#ff4a1c;font-size:0;line-height:0;">&nbsp;</td>
+    </tr></table>
+  </td></tr>
+
+  <tr>
+    <!-- the mark. alt text carries it when images are blocked -->
+    <td class="sig-mark" valign="top" style="padding:0 18px 0 0;width:64px;">
+      <a href="https://github.com/AlexMureti" style="text-decoration:none;">
+        <img src="https://raw.githubusercontent.com/AlexMureti/My-Portfolio-website/main/assets/mark-200.png"
+             width="64" height="64" alt="AM"
+             style="display:block;width:64px;height:64px;border:0;border-radius:14px;background-color:#0a0a0b;color:#edeae4;font-family:Georgia,serif;font-size:22px;text-align:center;line-height:64px;">
+      </a>
+    </td>
+
+    <td class="sig-body" valign="top" style="padding:0;">
+      <div class="sig-name" style="font-size:16px;line-height:21px;font-weight:600;color:#16181a;letter-spacing:-0.01em;padding-bottom:3px;">
+        Alex Maingi
+      </div>
+      <div class="sig-role" style="font-size:12px;line-height:17px;color:#6b6f73;letter-spacing:0.02em;padding-bottom:11px;">
+        Software &amp; AI Engineer &nbsp;&middot;&nbsp; Nairobi, Kenya
+      </div>
+      <div class="sig-meta" style="font-size:12px;line-height:20px;color:#3f4448;">
+        <a class="sig-link" href="mailto:alexmkmaingi@gmail.com" style="color:#3f4448;text-decoration:none;">alexmkmaingi@gmail.com</a>
+        &nbsp;&middot;&nbsp;
+        <a class="sig-link" href="tel:+254740180214" style="color:#3f4448;text-decoration:none;">+254&nbsp;740&nbsp;180&nbsp;214</a>
+      </div>
+      <div style="font-size:12px;line-height:20px;padding-bottom:14px;">
+        <a class="sig-link" href="https://github.com/AlexMureti" style="color:#ff4a1c;text-decoration:none;font-weight:500;">github.com/AlexMureti</a>
+        &nbsp;&middot;&nbsp;
+        <a class="sig-link" href="https://linkedin.com/in/alex-maingi-18084b373" style="color:#3f4448;text-decoration:none;">LinkedIn</a>
+      </div>
+
+      <!-- bulletproof button: a table cell with bgcolor, so it renders
+           in Outlook, which does not support CSS buttons -->
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:separate;"><tr>
+        <td class="sig-btn" bgcolor="#0a0a0b"
+            style="border-radius:5px;border:1px solid #0a0a0b;padding:8px 16px;mso-padding-alt:8px 16px;">
+          <a href="https://github.com/AlexMureti"
+             style="color:#ffffff;font-size:12px;line-height:12px;font-weight:500;text-decoration:none;display:inline-block;letter-spacing:0.02em;">
+            View my work &nbsp;&rarr;
+          </a>
+        </td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <tr><td colspan="2" class="sig-rule" style="padding:16px 0 0 0;border-top:1px solid #e6e3dd;font-size:0;line-height:0;">&nbsp;</td></tr>
+  <tr><td colspan="2" class="sig-foot" style="padding:10px 0 0 0;font-size:11px;line-height:16px;color:#9aa0a5;">
+    Systems in production across fintech, hospitality and agriculture.
+  </td></tr>
+</table>
