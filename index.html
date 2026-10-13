@@ -103,7 +103,7 @@ h2{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase
 @media(min-width:640px){.films{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .film{margin:0}
 .frame{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:6px;border:1px solid var(--line);background:var(--bg-2)}
-.frame img,.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame img,.frame video,.frame svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .frame video{opacity:0;transition:opacity .4s}
 .film.playing .frame video{opacity:1}
 .frame .dur{position:absolute;right:.5rem;bottom:.5rem;font-size:.68rem;font-weight:600;letter-spacing:.04em;color:#fff;background:rgba(0,0,0,.6);padding:.15rem .4rem;border-radius:3px}
@@ -286,7 +286,7 @@ footer a{color:var(--text)}footer a:hover{color:var(--accent)}
           <figcaption><b>Kito Oak Haven, booking film</b><a href="https://github.com/AlexMureti/alexmureti.github.io/releases/download/films-2026-10/kito-oak-haven-booking-film.mp4" target="_blank" rel="noopener">Watch</a></figcaption></figure></li>
         <li><figure class="film"><div class="frame"><img loading="lazy" src="media/posters/menorah-intro.jpg" alt=""><video muted loop playsinline preload="none" src="media/teasers/menorah-intro.mp4"></video><span class="dur">0:15</span></div>
           <figcaption><b>Menorah Faith Chapel, intro</b><a href="https://github.com/AlexMureti/alexmureti.github.io/releases/download/films-2026-10/menorah-faith-chapel-intro.mp4" target="_blank" rel="noopener">Watch</a></figcaption></figure></li>
-        <li><figure class="film"><div class="frame"><img loading="lazy" src="media/posters/trust-in-you.jpg" alt=""><video muted loop playsinline preload="none" src="media/teasers/trust-in-you.mp4"></video><span class="dur">2:49</span></div>
+        <li><figure class="film"><div class="frame"><svg viewBox="0 0 300 400" role="img" aria-label="Trust in You"><rect width="300" height="400" fill="#121316"/><text x="24" y="196" fill="#e8e6e1" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="600">Trust in You</text><text x="24" y="224" fill="#6f6c66" font-family="Inter,system-ui,sans-serif" font-size="14">a song, 2026</text></svg><span class="dur">2:49</span></div>
           <figcaption><b>Trust in You, lyric video</b><a href="https://github.com/AlexMureti/alexmureti.github.io/releases/download/films-2026-10/trust-in-you-lyric-video.mp4" target="_blank" rel="noopener">Watch</a></figcaption></figure></li>
       </ul>
       <p class="foot-note">Hover or tap a poster for six seconds. Forty-three films since 16 September 2026, for five brands, in 9:16 and 16:9.</p>
