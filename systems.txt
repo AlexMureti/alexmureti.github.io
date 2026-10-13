@@ -1,0 +1,8 @@
+brisk|https://www.brisk-credit.com
+kito|https://www.kitooakhaven.com
+shamba|https://shambaconnect.co.ke
+lasatarah|https://la-satarah-eight.vercel.app
+factoraised|https://factoraised-group.vercel.app
+medione|https://medi0ne.vercel.app
+menorah|https://menorah-faith-chapel.vercel.app
+mdsk|https://mdsk-kenya.vercel.app

@@ -1,0 +1,40 @@
+# Checks every public system in the index once a day and writes status.json.
+# The dots on the site are green because the site answered this morning,
+# not because somebody typed "live".
+name: status
+on:
+  schedule:
+    - cron: "0 3 * * *"   # 06:00 Nairobi
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check each system
+        run: |
+          now=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          echo '{' > status.json
+          echo "  \"checked_at\": \"$now\"," >> status.json
+          echo '  "systems": {' >> status.json
+          first=1
+          while IFS='|' read -r key url; do
+            [ -z "$key" ] && continue
+            code=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 25 "$url" || echo 000)
+            [ $first -eq 0 ] && echo ',' >> status.json
+            printf '    "%s": {"url": "%s", "code": %s, "up": %s}' "$key" "$url" "$code" "$([ "$code" = "200" ] && echo true || echo false)" >> status.json
+            first=0
+          done < systems.txt
+          echo '' >> status.json
+          echo '  }' >> status.json
+          echo '}' >> status.json
+          cat status.json
+      - name: Commit if changed
+        run: |
+          git config user.name "status-check"
+          git config user.email "status-check@users.noreply.github.com"
+          git add status.json
+          git diff --cached --quiet || git commit -m "status: $(date -u +%Y-%m-%d) [skip ci]"
+          git push

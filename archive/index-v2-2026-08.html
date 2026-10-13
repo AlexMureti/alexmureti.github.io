@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Maingi — Software & AI Engineer, Nairobi</title>
+<meta name="description" content="I build systems that stay running. Credit scoring against a live bank endpoint, a lender's production site, direct-booking and commerce platforms across Nairobi.">
+<meta name="author" content="Alex Maingi">
+<meta property="og:title" content="Alex Maingi — Software & AI Engineer">
+<meta property="og:description" content="Seven systems in production for real Kenyan businesses.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Alex Maingi — portfolio
+   One file. No framework, no build step, no dependencies.
+   That is deliberate: the last portfolio shipped 54 packages to
+   run on 4. This ships none.
+   ───────────────────────────────────────────────────────────── */
+
+:root{
+  --ground:#0a0a0b;
+  --ground-2:#101012;
+  --ink:#edeae4;
+  --ink-dim:#a5a29a;
+  --ink-faint:#6b6862;
+  --rule:#232326;
+  --hot:#ff4a1c;
+  --paper:#f2efe9;
+  --display:"Fraunces",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --pad:clamp(1.25rem,5vw,5.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--mono);font-weight:300;
+  font-size:clamp(.9rem,.86rem + .2vw,1rem);line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--hot);color:#0a0a0b}
+:focus-visible{outline:2px solid var(--hot);outline-offset:4px}
+
+.shell{width:100%;max-width:78rem;margin-inline:auto;padding-inline:var(--pad)}
+.rule{height:1px;background:var(--rule);border:0;margin:0}
+
+/* ── nav ─────────────────────────────────────────────── */
+nav{position:fixed;inset:0 0 auto;z-index:50;backdrop-filter:blur(14px);
+    background:color-mix(in srgb,var(--ground) 82%,transparent);
+    border-bottom:1px solid transparent;transition:border-color .5s}
+nav.stuck{border-bottom-color:var(--rule)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;
+        padding-block:1.1rem;gap:1rem}
+.sig{font-family:var(--mono);font-size:.72rem;letter-spacing:.26em;
+     text-transform:uppercase;color:var(--ink)}
+.nav-links{display:flex;gap:1.75rem;font-size:.7rem;letter-spacing:.18em;
+           text-transform:uppercase;color:var(--ink-dim)}
+.nav-links a{transition:color .3s}
+.nav-links a:hover{color:var(--hot)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* ── hero ────────────────────────────────────────────── */
+header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+       padding-top:5.5rem;padding-bottom:3rem;position:relative}
+.hero-grid{display:grid;gap:clamp(2rem,5vw,4rem);align-items:end;
+           grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;align-items:start}}
+.kicker{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+        color:var(--ink-faint);margin-bottom:clamp(1.5rem,4vw,2.75rem)}
+.kicker b{color:var(--hot);font-weight:400}
+
+/* The name is the one expressive thing on the page. Fraunces is a variable
+   font — the weight and optical-size axes drift as you scroll, so the
+   letterforms physically change character. Almost nobody does this, it costs
+   nothing, and it is invisible unless you are looking. That is the point. */
+.name{font-family:var(--display);font-weight:300;line-height:.82;
+      letter-spacing:-.03em;margin:0;
+      font-size:clamp(3rem,10.5vw,9.2rem);
+      font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 1;
+      will-change:font-variation-settings}
+.name span{display:block}
+.name .b{color:var(--hot);font-style:italic;font-weight:400}
+
+.lede{margin:0;max-width:44ch;
+      color:var(--ink-dim);font-size:clamp(.95rem,.9rem + .3vw,1.1rem);line-height:1.75}
+.lede strong{color:var(--ink);font-weight:400}
+
+.hero-foot{margin-top:clamp(1.75rem,4vw,2.5rem);display:flex;flex-direction:column;
+           gap:.55rem;border-left:1px solid var(--rule);padding-left:1.1rem}
+.stat{display:flex;gap:.7rem;align-items:baseline}
+.stat b{min-width:1.4ch}
+.stat b{font-family:var(--display);font-size:1.85rem;font-weight:400;
+        color:var(--ink);line-height:1}
+.stat span{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+           color:var(--ink-faint)}
+
+/* ── section frame ───────────────────────────────────── */
+section{padding-block:clamp(4.5rem,11vw,9rem)}
+.sec-head{display:flex;align-items:baseline;gap:1.25rem;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.sec-num{font-size:.68rem;letter-spacing:.2em;color:var(--hot)}
+.sec-title{font-family:var(--display);font-weight:300;letter-spacing:-.02em;
+           font-size:clamp(1.6rem,4vw,2.6rem);margin:0;line-height:1}
+
+/* ── work index ──────────────────────────────────────── */
+.entry{display:grid;grid-template-columns:4.5rem 1fr auto;gap:clamp(1rem,3vw,2.5rem);
+       padding-block:clamp(1.75rem,4vw,2.6rem);border-top:1px solid var(--rule);
+       position:relative;align-items:start}
+.entry:last-of-type{border-bottom:1px solid var(--rule)}
+/* Hairline draws across before the row resolves — the entry registers rather
+   than fades. One idea, once per row, nothing else moves. */
+.entry::before{content:"";position:absolute;inset:-1px 0 auto 0;height:1px;
+               background:var(--hot);transform:scaleX(0);transform-origin:left;opacity:0}
+.entry.seen::before{animation:register 1.7s var(--ease) forwards}
+@keyframes register{
+  0%{transform:scaleX(0);opacity:1}
+  50%{transform:scaleX(1);opacity:1}
+  100%{transform:scaleX(1);opacity:0}
+}
+.entry > *{opacity:0;transform:translateY(14px);
+           transition:opacity .8s var(--ease) .22s,transform .8s var(--ease) .22s}
+.entry.seen > *{opacity:1;transform:none}
+
+.e-num{font-size:.7rem;color:var(--ink-faint);letter-spacing:.14em;padding-top:.55rem}
+.e-name{font-family:var(--display);font-weight:400;letter-spacing:-.015em;
+        font-size:clamp(1.4rem,3.4vw,2.15rem);line-height:1.05;margin:0 0 .6rem}
+.e-sector{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;
+          color:var(--hot);margin-bottom:.85rem}
+.e-body{color:var(--ink-dim);max-width:62ch;margin:0 0 1.1rem;line-height:1.72}
+.e-body b{color:var(--ink);font-weight:400}
+.stack{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--ink-faint);border:1px solid var(--rule);
+      padding:.28rem .6rem;border-radius:2px}
+.e-side{text-align:right;display:flex;flex-direction:column;gap:.55rem;
+        align-items:flex-end;padding-top:.4rem}
+.status{display:inline-flex;align-items:center;gap:.45rem;font-size:.62rem;
+        letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);white-space:nowrap}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--hot);flex:none;
+     box-shadow:0 0 0 0 color-mix(in srgb,var(--hot) 60%,transparent);
+     animation:pulse 2.8s var(--ease) infinite}
+.dot.off{background:var(--ink-faint);animation:none;box-shadow:none}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--hot) 55%,transparent)}
+  70%{box-shadow:0 0 0 7px transparent}
+  100%{box-shadow:0 0 0 0 transparent}
+}
+.visit{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+       color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:2px;
+       transition:color .3s,border-color .3s;white-space:nowrap}
+.visit:hover{color:var(--hot);border-color:var(--hot)}
+@media(max-width:820px){
+  .entry{grid-template-columns:2.5rem 1fr}
+  .e-side{grid-column:2;text-align:left;align-items:flex-start;padding-top:.4rem}
+}
+
+/* ── training ────────────────────────────────────────── */
+.train{display:grid;gap:1px;background:var(--rule);
+       grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));
+       border:1px solid var(--rule)}
+.card{background:var(--ground);padding:clamp(1.4rem,3vw,2rem)}
+.card h3{font-family:var(--display);font-weight:400;font-size:1.2rem;
+         margin:.5rem 0 .4rem;letter-spacing:-.01em}
+.card p{color:var(--ink-faint);font-size:.76rem;margin:0;line-height:1.65}
+.card .yr{font-size:.64rem;letter-spacing:.2em;color:var(--hot)}
+
+/* ── contact ─────────────────────────────────────────── */
+.contact{background:var(--paper);color:#111}
+.contact .sec-title{color:#111}
+.big-link{font-family:var(--display);font-weight:300;letter-spacing:-.025em;
+          font-size:clamp(1.75rem,7vw,4.75rem);line-height:1.05;
+          display:inline-block;color:#111;position:relative}
+.big-link::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:2px;
+                 background:#111;transform:scaleX(0);transform-origin:right;
+                 transition:transform .6s var(--ease)}
+.big-link:hover::after{transform:scaleX(1);transform-origin:left}
+.c-meta{display:flex;flex-wrap:wrap;gap:.75rem 2.5rem;margin-top:clamp(2rem,5vw,3rem);
+        font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#5a5a55}
+.c-meta a{border-bottom:1px solid #c9c5bd;padding-bottom:2px;transition:border-color .3s}
+.c-meta a:hover{border-color:var(--hot)}
+
+footer{padding-block:2.5rem;font-size:.64rem;letter-spacing:.16em;
+       text-transform:uppercase;color:var(--ink-faint);
+       display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
+
+.reveal{opacity:0;transform:translateY(18px);
+        transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.seen{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal,.entry>*{opacity:1;transform:none}
+  .entry::before{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="shell nav-in">
+    <a href="#top" class="sig">Alex&nbsp;Maingi</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#training">Training</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/AlexMureti" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="shell">
+    <p class="kicker">Software &amp; AI Engineer · Nairobi, Kenya · <b>Seven systems in production</b></p>
+    <div class="hero-grid">
+      <div>
+    <h1 class="name" id="name">
+      <span>Alex</span>
+      <span class="b">Mureti</span>
+      <span>Maingi</span>
+    </h1>
+      </div>
+      <div>
+    <p class="lede">
+      I build systems that stay running. One of them scores credit applications
+      for a Kenyan lender against a <strong>live bank endpoint</strong>. Others take
+      bookings, capture loan leads into a bank's own management system, and sell
+      produce over WhatsApp because that is what the customer actually uses.
+    </p>
+    <div class="hero-foot">
+      <span class="stat"><b>7</b><span>Systems in production</span></span>
+      <span class="stat"><b>5</b><span>Sectors</span></span>
+      <span class="stat"><b>4</b><span>Certifications</span></span>
+    </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Selected systems</h2>
+    </div>
+
+    <article class="entry">
+      <div class="e-num">001</div>
+      <div>
+        <div class="e-sector">Fintech · Machine learning</div>
+        <h3 class="e-name">Credit Scoring Engine</h3>
+        <p class="e-body">
+          A scoring service for a licensed Kenyan lender. It ingests applicant and
+          bureau data, returns a decision, and runs as a containerised API on a VPS
+          that a <b>partner bank posts to in production</b>. Includes an isolated
+          agriculture-finance pipeline scored on separate criteria from consumer
+          lending, because a farmer's cash flow is seasonal and a salaried
+          borrower's is not.
+        </p>
+        <div class="stack"><span class="chip">Python</span><span class="chip">Docker</span><span class="chip">REST API</span><span class="chip">Linux VPS</span></div>
+      </div>
+      <div class="e-side">
+        <span class="status"><i class="dot"></i>In production</span>
+        <span class="status" style="color:var(--ink-faint)">Client-owned · private</span>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num">002</div>
+      <div>
+        <div class="e-sector">Fintech · Lending</div>
+        <h3 class="e-name">Brisk Credit</h3>
+        <p class="e-body">
+          Production site for a Kenyan microlender. Product-aware repayment
+          calculator, phone-OTP accounts, and an application form that writes
+          directly into the client's existing loan-management system across
+          <b>42 branches</b> — with email, WhatsApp and form fallbacks so a lead is
+          never lost if the write fails. Built for mama-mboga borrowers, in English
+          and light Swahili.
+        </p>
+        <div class="stack"><span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">Serverless</span><span class="chip">Firestore</span></div>
+      </div>
+      <div class="e-side">
+        <span class="status"><i class="dot"></i>Live</span>
+        <a class="visit" href="https://www.brisk-credit.com" target="_blank" rel="noopener">brisk-credit.com ↗</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num">003</div>
+      <div>
+        <div class="e-sector">Hospitality · Direct booking</div>
+        <h3 class="e-name">Kito Oak Haven</h3>
+        <p class="e-body">
+          A direct-booking site built to take a Nairobi apartment off platform fees.
+          The centrepiece is a calculator the guest drives: they enter the quote
+          Airbnb gave them, see the direct price, and the WhatsApp message arrives
+          pre-filled with those figures. The walkthrough is <b>eight distinct scroll
+          mechanics</b> — pinned, scrubbed, split, still — so it never reads as a
+          photo album. Desktop gets a silent hero film cut from a 30-megapixel
+          shoot; phones never download it.
+        </p>
+        <div class="stack"><span class="chip">Next.js</span><span class="chip">Static export</span><span class="chip">Framer Motion</span><span class="chip">Remotion</span></div>
+      </div>
+      <div class="e-side">
+        <span class="status"><i class="dot"></i>Live</span>
+        <a class="visit" href="https://kito-oak-haven.vercel.app" target="_blank" rel="noopener">View site ↗</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num">004</div>
+      <div>
+        <div class="e-sector">Agriculture · Commerce</div>
+        <h3 class="e-name">Shamba Connect</h3>
+        <p class="e-body">
+          Urban agriculture and kitchen-garden enterprise. Photography-forward,
+          impact metrics, and ordering over WhatsApp rather than a card checkout —
+          a deliberate call, because the customers have phones and M-Pesa, not
+          card habits. It <b>converted a client with zero ad spend</b>: she
+          found the site, and hired me off it.
+        </p>
+        <div class="stack"><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Tailwind</span></div>
+      </div>
+      <div class="e-side">
+        <span class="status"><i class="dot"></i>Live</span>
+        <a class="visit" href="https://shambaconnect.co.ke" target="_blank" rel="noopener">shambaconnect.co.ke ↗</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num">005</div>
+      <div>
+        <div class="e-sector">Automotive</div>
+        <h3 class="e-name">Factoraised Group</h3>
+        <p class="e-body">
+          Multi-page dealership platform for a working automotive business.
+          Price-based vehicle filtering, responsive slideshow, and a reusable
+          component set built to let non-technical staff add stock without a
+          developer.
+        </p>
+        <div class="stack"><span class="chip">Next.js</span><span class="chip">JavaScript</span><span class="chip">Tailwind</span></div>
+      </div>
+      <div class="e-side">
+        <span class="status"><i class="dot"></i>Live</span>
+        <a class="visit" href="https://factoraised-group.netlify.app" target="_blank" rel="noopener">View site ↗</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num">006</div>
+      <div>
+        <div class="e-sector">Healthcare</div>
+        <h3 class="e-name">MediOne Pharmacy</h3>
+        <p class="e-body">
+          Pharmacy frontend with a modular TypeScript component architecture,
+          client-side routing and mobile-first layouts. Built for a market where
+          most traffic arrives on a phone over a metered connection.
+        </p>
+        <div class="stack"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Vite</span></div>
+      </div>
+      <div class="e-side">
+        <span class="status"><i class="dot"></i>Live</span>
+        <a class="visit" href="https://medi0ne-pharmacy.netlify.app" target="_blank" rel="noopener">View site ↗</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num">007</div>
+      <div>
+        <div class="e-sector">Non-profit · Accessibility</div>
+        <h3 class="e-name">Men with Disabilities Society of Kenya</h3>
+        <p class="e-body">
+          A site for a disability advocacy organisation, built accessibility-first
+          rather than accessibility-audited. Every colour pair is contrast-verified,
+          the logo was <b>rebuilt as vector</b> because no usable original existed,
+          and images of vulnerable people are gated behind explicit consent in the
+          asset manifest.
+        </p>
+        <div class="stack"><span class="chip">Static</span><span class="chip">Design system</span><span class="chip">SVG</span><span class="chip">WCAG</span></div>
+      </div>
+      <div class="e-side">
+        <span class="status"><i class="dot off"></i>Awaiting launch</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="training">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Training</h2>
+    </div>
+    <div class="train reveal">
+      <div class="card">
+        <div class="yr">ALX Africa</div>
+        <h3>Software Engineering</h3>
+        <p>Full programme. Systems fundamentals, C and Python, Linux, version control, and the habit of shipping under review.</p>
+      </div>
+      <div class="card">
+        <div class="yr">Moringa School</div>
+        <h3>Artificial Intelligence</h3>
+        <p>Applied machine learning and AI systems — the training behind the scoring engine now running in production.</p>
+      </div>
+      <div class="card">
+        <div class="yr">Moringa School</div>
+        <h3>Software Development</h3>
+        <p>Full-stack development, modern JavaScript and TypeScript, and delivery from requirements through to deployment.</p>
+      </div>
+      <div class="card">
+        <div class="yr">Anthropic</div>
+        <h3>Claude Code</h3>
+        <p>Agentic development workflows — building with AI as a collaborator rather than an autocomplete.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-num" style="color:var(--hot)">03</span>
+      <h2 class="sec-title">Contact</h2>
+    </div>
+    <div class="reveal">
+      <a class="big-link" href="mailto:alexmkmaingi@gmail.com">alexmkmaingi@gmail.com</a>
+      <div class="c-meta">
+        <span>Nairobi, Kenya · EAT</span>
+        <a href="https://github.com/AlexMureti" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/alex-maingi-18084b373" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+<div class="shell">
+  <footer>
+    <span>Alex Maingi — Nairobi</span>
+    <span>Built by hand · no framework · no dependencies</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var name=document.getElementById('name');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Reveal on scroll — one observer, everything opted in by class.
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -12% 0px',threshold:0.15});
+  document.querySelectorAll('.entry,.reveal').forEach(function(el){ io.observe(el); });
+
+  var ticking=false;
+  function frame(){
+    var y=window.scrollY;
+    nav.classList.toggle('stuck', y>24);
+
+    // Fraunces is variable. As the hero leaves, the weight and optical-size
+    // axes drift, so the letterforms genuinely change shape rather than just
+    // fading. Cheap, and almost nobody bothers.
+    if(!reduce && name){
+      var p=Math.min(1, y/(window.innerHeight*0.9));
+      var wght=300+p*260, opsz=144-p*126, soft=p*45;
+      name.style.fontVariationSettings='"opsz" '+opsz.toFixed(1)+',"wght" '+wght.toFixed(0)+',"SOFT" '+soft.toFixed(1)+',"WONK" 1';
+    }
+    ticking=false;
+  }
+  addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(frame); ticking=true; } },{passive:true});
+  frame();
+})();
+</script>
+</body>
+</html>

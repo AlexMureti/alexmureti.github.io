@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-13T13:11:07Z",
+  "systems": {
+    "brisk": {"url": "https://www.brisk-credit.com", "code": 200, "up": true},
+    "kito": {"url": "https://www.kitooakhaven.com", "code": 200, "up": true},
+    "shamba": {"url": "https://shambaconnect.co.ke", "code": 200, "up": true},
+    "lasatarah": {"url": "https://la-satarah-eight.vercel.app", "code": 200, "up": true},
+    "factoraised": {"url": "https://factoraised-group.vercel.app", "code": 200, "up": true},
+    "medione": {"url": "https://medi0ne.vercel.app", "code": 200, "up": true},
+    "menorah": {"url": "https://menorah-faith-chapel.vercel.app", "code": 200, "up": true},
+    "mdsk": {"url": "https://mdsk-kenya.vercel.app", "code": 503, "up": false}
+  }
+}
