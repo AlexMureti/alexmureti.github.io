@@ -309,12 +309,12 @@ footer a{color:var(--text)}footer a:hover{color:var(--accent)}
   </main>
 </div>
 
-<script>
 <dialog class="player" id="player">
   <button class="close" id="closePlayer" aria-label="Close">×</button>
   <figure style="margin:0"><video id="playerVideo" controls playsinline preload="metadata"></video><figcaption><span id="playerTitle"></span><a id="playerDl" href="#" download>Download</a></figcaption></figure>
 </dialog>
 
+<script>
 (function(){
   document.documentElement.classList.add('js');
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
