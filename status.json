@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30T09:19:09Z",
+  "checked_at": "2026-10-31T09:06:20Z",
   "systems": {
     "brisk": {"url": "https://www.brisk-credit.com", "code": 200, "up": true},
     "kito": {"url": "https://www.kitooakhaven.com", "code": 200, "up": true},
