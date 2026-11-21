@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-11-20T10:45:08Z",
+  "checked_at": "2026-11-21T10:28:39Z",
   "systems": {
-    "brisk": {"url": "https://www.brisk-credit.com", "code": 402, "up": false},
+    "brisk": {"url": "https://www.brisk-credit.com", "code": 200, "up": true},
     "kito": {"url": "https://www.kitooakhaven.com", "code": 200, "up": true},
     "shamba": {"url": "https://shambaconnect.co.ke", "code": 200, "up": true},
     "lasatarah": {"url": "https://la-satarah-eight.vercel.app", "code": 200, "up": true},
